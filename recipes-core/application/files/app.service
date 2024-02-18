@@ -1,0 +1,8 @@
+[Unit]
+Description=GNU Application startup script for Arod
+
+[Service]
+ExecStart=/usr/bin/app
+
+[Install]
+WantedBy=multi-user.target
