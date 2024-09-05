@@ -123,7 +123,7 @@ PACKAGE_CLASSES ?= "package_rpm"
 # We default to enabling the debugging tweaks.
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
 
-CORE_IMAGE_EXTRA_INSTALL += " app opencv libopencv-core libopencv-imgproc"
+CORE_IMAGE_EXTRA_INSTALL += " app"
 
 #
 # Additional image features
@@ -222,7 +222,7 @@ BB_DISKMON_DIRS ??= "\
 #
 # By default native qemu will build with a builtin VNC server where graphical output can be
 # seen. The line below enables the SDL UI frontend too.
-PACKAGECONFIG_append_pn-qemu-system-native = " sdl"
+#PACKAGECONFIG:pn-qemu-system-native:append = " sdl"
 # By default libsdl2-native will be built, if you want to use your host's libSDL instead of 
 # the minimal libsdl built by libsdl2-native then uncomment the ASSUME_PROVIDED line below.
 #ASSUME_PROVIDED += "libsdl2-native"
