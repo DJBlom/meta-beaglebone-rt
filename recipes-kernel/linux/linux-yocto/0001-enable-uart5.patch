@@ -1,0 +1,30 @@
+diff --git a/am335x-boneblack.dts b/am335x-boneblack-custom.dts
+index 16b567e..9822afd 100644
+--- a/arch/arm/boot/dts/ti/omap/am335x-boneblack.dts
++++ b/arch/arm/boot/dts/ti/omap/am335x-boneblack.dts
+@@ -173,3 +173,25 @@
+ &baseboard_eeprom {
+ 	vcc-supply = <&ldo4_reg>;
+ };
++
++&am33xx_pinmux {
++	uart5_pins: uart5-pins {
++		pinctrl-single,pins = <
++			AM33XX_PADCONF(AM335X_PIN_LCD_DATA9, PIN_INPUT, MUX_MODE4)	/* lcd_data9.uart5_rxd */
++			AM33XX_PADCONF(AM335X_PIN_LCD_DATA8, PIN_OUTPUT, MUX_MODE4)	/* lcd_data8.uart5_txd */
++		>;
++	};
++};
++
++&uart5 {
++    status = "okay";
++    compatible = "ti,am3352-uart", "ti,omap3-uart";
++
++    clock-frequency = <48000000>;
++    reg = <0x0 0x1000>;
++    interrupts = <46>;
++    dmas = <&edma 30 0>, <&edma 31 0>;
++    dma-names = "tx", "rx";
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart5_pins>;
++};
